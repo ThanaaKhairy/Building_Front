@@ -1,0 +1,217 @@
+/* ============================================
+   Activity Log Styles
+============================================ */
+
+.activity-log-header {
+  margin-bottom: 24px;
+}
+
+.activity-log-header h2 {
+  margin: 0;
+}
+
+.activity-log-header .subtitle {
+  color: #7F8C8D;
+  margin-top: 4px;
+}
+
+/* ✅ Filters */
+.activity-log-filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.activity-log-filters .search-box {
+  display: flex;
+  align-items: center;
+  background: #F5F6FA;
+  border-radius: 8px;
+  padding: 8px 14px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.activity-log-filters .search-icon {
+  color: #7F8C8D;
+  margin-left: 10px;
+}
+
+.activity-log-filters .search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.95rem;
+  color: #2C3E50;
+  width: 100%;
+}
+
+.activity-log-filters .filter-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.activity-log-filters .filter-select {
+  padding: 8px 14px;
+  border: 2px solid #ECF0F1;
+  border-radius: 8px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.9rem;
+  color: #2C3E50;
+  background: #fff;
+  cursor: pointer;
+  min-width: 130px;
+}
+
+.activity-log-filters .filter-select:focus {
+  border-color: #C0392B;
+  outline: none;
+}
+
+/* ✅ Table Cells */
+.user-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-cell .username {
+  font-weight: 600;
+}
+
+.user-cell .role-badge {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.user-cell .role-badge.super_admin {
+  background: #FADBD8;
+  color: #C0392B;
+}
+
+.user-cell .role-badge.admin {
+  background: #FDEBD0;
+  color: #E67E22;
+}
+
+.action-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #ECF0F1;
+  color: #2C3E50;
+}
+
+.entity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #D4E6F1;
+  color: #1A5276;
+}
+
+.details-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.details-cell .entity-name {
+  font-weight: 600;
+}
+
+.details-cell .details-text {
+  font-size: 0.8rem;
+  color: #7F8C8D;
+}
+
+.date-cell {
+  font-size: 0.8rem;
+  color: #7F8C8D;
+  white-space: nowrap;
+}
+
+/* ✅ Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #7F8C8D;
+}
+
+/* ✅ Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #ECF0F1;
+}
+
+.pagination .page-info {
+  font-size: 0.9rem;
+  color: #7F8C8D;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .activity-log-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .activity-log-filters .search-box {
+    max-width: 100%;
+  }
+  
+  .activity-log-filters .filter-group {
+    width: 100%;
+  }
+  
+  .activity-log-filters .filter-select {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .details-cell .details-text {
+    display: none;
+  }
+  
+  .date-cell {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .activity-log-filters .filter-group {
+    flex-direction: column;
+  }
+  
+  .user-cell .role-badge {
+    font-size: 0.55rem;
+    padding: 1px 6px;
+  }
+  
+  .action-badge,
+  .entity-badge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+  }
+}
