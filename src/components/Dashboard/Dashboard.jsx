@@ -65,7 +65,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div style={styles.grid}>
+      <div className="dashboard-grid">
         <Card title="📈 آخر المبيعات">
           <RecentSales sales={sales} />
         </Card>
@@ -100,11 +100,6 @@ const styles = {
   subtitle: {
     color: '#7F8C8D',
     marginTop: '4px',
-  },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '20px',
   },
   lowStockList: {
     display: 'flex',

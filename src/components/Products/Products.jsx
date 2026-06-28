@@ -4,7 +4,6 @@ import { FaPlus, FaEdit, FaTrash, FaSearch, FaSave, FaTimes } from 'react-icons/
 import { useApp } from '../../context/AppContext';
 import Card from '../common/Card';
 import Button from '../common/Button';
-import Input from '../common/Input';
 
 const Products = () => {
   const navigate = useNavigate();
@@ -92,10 +91,10 @@ const Products = () => {
 
   return (
     <div className="fade-in">
-      <div style={styles.header}>
+      <div className="products-header">
         <div>
           <h2>📦 المنتجات</h2>
-          <p style={styles.subtitle}>إدارة المنتجات والمخزون</p>
+          <p className="products-subtitle">إدارة المنتجات والمخزون</p>
         </div>
         <Button
           variant="primary"
@@ -107,18 +106,18 @@ const Products = () => {
       </div>
 
       <Card>
-        <div style={styles.toolbar}>
-          <div style={styles.searchBox}>
-            <FaSearch style={styles.searchIcon} />
+        <div className="products-toolbar">
+          <div className="products-search">
+            <FaSearch className="products-search-icon" />
             <input
               type="text"
               placeholder="بحث عن منتج..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={styles.searchInput}
+              className="products-search-input"
             />
           </div>
-          <label style={styles.filterLabel}>
+          <label className="products-filter">
             <input
               type="checkbox"
               checked={filterLowStock}
@@ -150,7 +149,6 @@ const Products = () => {
                   <tr key={product._id}>
                     <td>{index + 1}</td>
                     
-                    {/* ✅ عمود المنتج - قابل للتعديل */}
                     <td>
                       {isEditing ? (
                         <input
@@ -158,21 +156,20 @@ const Products = () => {
                           name="name"
                           value={editForm.name || ''}
                           onChange={handleEditChange}
-                          style={styles.editInput}
+                          className="table-edit-input"
                         />
                       ) : (
                         <strong>{product.name}</strong>
                       )}
                     </td>
                     
-                    {/* ✅ عمود الوحدة - قابل للتعديل */}
                     <td>
                       {isEditing ? (
                         <select
                           name="unit"
                           value={editForm.unit || ''}
                           onChange={handleEditChange}
-                          style={styles.editInput}
+                          className="table-edit-input"
                         >
                           <option value="كيس">كيس</option>
                           <option value="طوبة">طوبة</option>
@@ -188,15 +185,10 @@ const Products = () => {
                       )}
                     </td>
                     
-                    {/* ✅ عمود الكمية - غير قابل للتعديل (للقراءة فقط) */}
-                    <td style={{
-                      color: product.quantity <= product.minStockWarning ? '#E74C3C' : '#2C3E50',
-                      fontWeight: product.quantity <= product.minStockWarning ? 700 : 400,
-                    }}>
+                    <td className={product.quantity <= product.minStockWarning ? 'stock-low' : 'stock-ok'}>
                       {product.quantity}
                     </td>
                     
-                    {/* ✅ عمود سعر الشراء - قابل للتعديل */}
                     <td>
                       {isEditing ? (
                         <input
@@ -204,7 +196,7 @@ const Products = () => {
                           name="currentBuyPrice"
                           value={editForm.currentBuyPrice || 0}
                           onChange={handleEditChange}
-                          style={{ ...styles.editInput, width: '80px' }}
+                          className="table-edit-input price-input"
                           min="0"
                           step="0.01"
                         />
@@ -213,7 +205,6 @@ const Products = () => {
                       )}
                     </td>
                     
-                    {/* ✅ عمود سعر البيع - قابل للتعديل */}
                     <td>
                       {isEditing ? (
                         <input
@@ -221,7 +212,7 @@ const Products = () => {
                           name="currentSellPrice"
                           value={editForm.currentSellPrice || 0}
                           onChange={handleEditChange}
-                          style={{ ...styles.editInput, width: '80px' }}
+                          className="table-edit-input price-input"
                           min="0"
                           step="0.01"
                         />
@@ -230,7 +221,6 @@ const Products = () => {
                       )}
                     </td>
                     
-                    {/* ✅ عمود الحالة */}
                     <td>
                       <span className={`badge ${
                         product.quantity <= product.minStockWarning ? 'badge-danger' : 'badge-success'
@@ -239,10 +229,9 @@ const Products = () => {
                       </span>
                     </td>
                     
-                    {/* ✅ عمود الإجراءات */}
                     <td>
                       {isEditing ? (
-                        <div style={styles.editActions}>
+                        <div className="table-actions">
                           <Button
                             variant="success"
                             size="sm"
@@ -261,7 +250,7 @@ const Products = () => {
                           </Button>
                         </div>
                       ) : (
-                        <div style={styles.actions}>
+                        <div className="table-actions">
                           <Button
                             variant="outline"
                             size="sm"
@@ -287,7 +276,7 @@ const Products = () => {
             </tbody>
           </table>
           {filteredProducts.length === 0 && (
-            <div style={styles.empty}>
+            <div className="products-empty">
               <p>لا توجد منتجات</p>
             </div>
           )}
@@ -295,84 +284,6 @@ const Products = () => {
       </Card>
     </div>
   );
-};
-
-const styles = {
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '24px',
-    flexWrap: 'wrap',
-    gap: '12px',
-  },
-  subtitle: {
-    color: '#7F8C8D',
-    marginTop: '4px',
-  },
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '16px',
-    flexWrap: 'wrap',
-    gap: '12px',
-  },
-  searchBox: {
-    display: 'flex',
-    alignItems: 'center',
-    background: '#F5F6FA',
-    borderRadius: '8px',
-    padding: '8px 14px',
-    flex: 1,
-    maxWidth: '400px',
-  },
-  searchIcon: {
-    color: '#7F8C8D',
-    marginLeft: '10px',
-  },
-  searchInput: {
-    border: 'none',
-    background: 'transparent',
-    outline: 'none',
-    fontFamily: "'Cairo', sans-serif",
-    fontSize: '0.95rem',
-    color: '#2C3E50',
-    width: '100%',
-  },
-  filterLabel: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    fontSize: '0.9rem',
-    color: '#2C3E50',
-    cursor: 'pointer',
-  },
-  editInput: {
-    padding: '4px 8px',
-    border: '2px solid #C0392B',
-    borderRadius: '4px',
-    fontSize: '0.85rem',
-    fontFamily: "'Cairo', sans-serif",
-    width: '100%',
-    minWidth: '60px',
-    background: '#fff',
-  },
-  actions: {
-    display: 'flex',
-    gap: '6px',
-    flexWrap: 'wrap',
-  },
-  editActions: {
-    display: 'flex',
-    gap: '6px',
-    flexWrap: 'wrap',
-  },
-  empty: {
-    textAlign: 'center',
-    padding: '40px',
-    color: '#7F8C8D',
-  },
 };
 
 export default Products;

@@ -693,3 +693,470 @@ select.form-control {
     font-size: 0.68rem;
   }
 }
+
+/* ============================================
+   Dashboard Grid - Responsive
+============================================ */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ✅ على التابلت */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* ✅ على الموبايل */
+@media (max-width: 480px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+
+/* ============================================
+   Products Page - Responsive
+============================================ */
+
+/* ✅ Header */
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.products-subtitle {
+  color: #7F8C8D;
+  margin-top: 4px;
+}
+
+/* ✅ Toolbar */
+.products-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.products-search {
+  display: flex;
+  align-items: center;
+  background: #F5F6FA;
+  border-radius: 8px;
+  padding: 8px 14px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.products-search-icon {
+  color: #7F8C8D;
+  margin-left: 10px;
+}
+
+.products-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.95rem;
+  color: #2C3E50;
+  width: 100%;
+}
+
+.products-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #2C3E50;
+  cursor: pointer;
+}
+
+/* ✅ Stock status */
+.stock-low {
+  color: #E74C3C;
+  font-weight: 700;
+}
+
+.stock-ok {
+  color: #2C3E50;
+  font-weight: 400;
+}
+
+/* ✅ Price inputs */
+.price-input {
+  max-width: 80px !important;
+}
+
+/* ✅ Empty state */
+.products-empty {
+  text-align: center;
+  padding: 40px;
+  color: #7F8C8D;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .products-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .products-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .products-search {
+    max-width: 100%;
+  }
+  
+  .products-filter {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .products-search {
+    padding: 6px 10px;
+  }
+  
+  .products-search-input {
+    font-size: 0.85rem;
+  }
+  
+  .products-filter {
+    font-size: 0.8rem;
+  }
+}
+
+/* ============================================
+   Sidebar - Styles
+============================================ */
+
+/* ✅ الـ Sidebar */
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 280px;
+  background: linear-gradient(180deg, #2C3E50 0%, #1A252F 100%);
+  color: #fff;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+}
+
+/* ✅ على الكمبيوتر - دايمن ظاهر */
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+  
+  .sidebar-close-btn {
+    display: none !important;
+  }
+  
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
+
+/* ✅ على الموبايل */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 85%;
+    max-width: 300px;
+    transform: translateX(100%);
+  }
+  
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-close-btn {
+    display: block !important;
+  }
+  
+  .sidebar-overlay {
+    display: block !important;
+  }
+}
+
+/* ✅ زر الإغلاق */
+.sidebar-close-btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  transition: all 0.3s ease;
+}
+
+/* ✅ Logo */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.sidebar-logo span {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* ✅ Navigation */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 12px;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #BDC3C7;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+.sidebar-nav-item-active {
+  background: rgba(192, 57, 43, 0.3);
+  color: #fff;
+  border-right: 3px solid #C0392B;
+}
+
+.sidebar-nav-icon {
+  font-size: 1.1rem;
+  width: 24px;
+  text-align: center;
+}
+
+/* ✅ Bottom */
+.sidebar-bottom {
+  padding: 0 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.sidebar-user {
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+}
+
+.sidebar-user-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.sidebar-user-role {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #E67E22;
+  margin-top: 2px;
+}
+
+.sidebar-logout {
+  width: 100%;
+  padding: 10px 16px;
+  background: rgba(231, 76, 60, 0.2);
+  color: #E74C3C;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-logout:hover {
+  background: rgba(231, 76, 60, 0.3);
+}
+
+/* ============================================
+   Navbar - Styles
+============================================ */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.navbar-menu-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #2C3E50;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-menu-btn:hover {
+  background: #F5F6FA;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  background: #F5F6FA;
+  borderRadius: 8px;
+  padding: 8px 14px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.navbar-search-icon {
+  color: #7F8C8D;
+  margin-left: 10px;
+}
+
+.navbar-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.95rem;
+  color: #2C3E50;
+  width: 100%;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-notification {
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar-notification-icon {
+  font-size: 1.3rem;
+  color: #7F8C8D;
+  transition: color 0.3s;
+}
+
+.navbar-notification-icon:hover {
+  color: #2C3E50;
+}
+
+.navbar-notification-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #E74C3C;
+  color: #fff;
+  font-size: 0.65rem;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* ✅ Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 16px;
+  }
+  
+  .navbar-search {
+    max-width: 100%;
+  }
+  
+  .navbar-menu-btn {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 8px 12px;
+  }
+  
+  .navbar-search-input {
+    font-size: 0.85rem;
+  }
+  
+  .navbar-notification-badge {
+    width: 16px;
+    height: 16px;
+    font-size: 0.55rem;
+  }
+}
